@@ -41,7 +41,9 @@ jobs:
           pip install pytest
 
       - name: Run tests
-        run: pytest tests/
+        run: |
+          echo "Running tests with PYTHONPATH"
+          PYTHONPATH=$(pwd) pytest tests/
 
   deploy:
     needs: test
@@ -55,3 +57,4 @@ jobs:
 
       - name: Simulate deployment
         run: echo "Deploying to staging server..."
+
